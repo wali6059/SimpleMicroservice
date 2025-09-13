@@ -113,34 +113,15 @@ class CourseRead(CourseBase):
     """Server representation returned to clients."""
 
     created_at: datetime = Field(
-        default_factory=datetime,
+        default_factory=datetime.utcnow,
         description="Creation timestamp (UTC).",
         json_schema_extra={"example": "2024-01-15T10:20:30Z"},
     )
     updated_at: datetime = Field(
-        default_factory=datetime,
+        default_factory=datetime.utcnow,
         description="Last update timestamp (UTC).",
         json_schema_extra={"example": "2024-02-16T12:00:00Z"},
     )
-
-    model_config = {
-        "json_schema_extra": {
-            "examples": [
-                {
-                    "id": "22222222-2222-4222-8222-222222222222",
-                    "title": "Introduction to Computer Science",
-                    "description": "An introduction to computer science concepts including programming fundamentals, data structures, and algorithms.",
-                    "credits": 3,
-                    "department": "Computer Science",
-                    "level": 1000,
-                    "semester": "fall",
-                    "year": 2024,
-                    "created_at": "2024-01-15T10:20:30Z",
-                    "updated_at": "2024-02-16T12:00:00Z",
-                }
-            ]
-        }
-    }
 
     model_config = {
         "json_schema_extra": {
